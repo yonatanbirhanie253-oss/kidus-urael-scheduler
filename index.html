@@ -26,6 +26,7 @@ function editable(){["d1","d2","d3","psalm","r1","r2"].forEach(id=>g(id).disable
 function eligible(pos){return S.deacons.filter(d=>(d.positions||[1,2,3]).includes(pos))}
 function opts(){[1,2,3].forEach(pos=>{let id="d"+pos,old=g(id).value;g(id).innerHTML='<option value="">-- Select a deacon --</option>'+eligible(pos).map(d=>"<option>"+d.name+"</option>").join("");g(id).value=old})}
 const ethFmt=new Intl.DateTimeFormat("am-ET-u-ca-ethiopic",{month:"long",year:"numeric",day:"numeric"});
+const ETH_MONTH_NAMES=["መስከረም","ጥቅምት","ኅዳር","ታኅሣሥ","ጥር","የካቲት","መጋቢት","ሚያዝያ","ግንቦት","ሰኔ","ሐምሌ","ነሐሴ","ጳጉሜን"];
 const ethParts=d=>Object.fromEntries(ethFmt.formatToParts(d).filter(p=>p.type!=="literal").map(p=>[p.type,p.value]));
 function ethMonthId(d){let p=ethParts(d);return p.month+"|"+p.year}
 function ethDay(d){return ethParts(d).day}

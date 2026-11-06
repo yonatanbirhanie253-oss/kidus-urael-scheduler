@@ -20,7 +20,12 @@ const CHURCH_DEACONS=[
 {name:"Yonatan",positions:[1,2,3]},{name:"Rufael",positions:[1,2,3]},{name:"Abel",positions:[1,2,3]},{name:"Ephron",positions:[1,2,3]},{name:"Dawit",positions:[1,2,3]},{name:"Eyosi",positions:[1,2,3]},{name:"Robel",positions:[1,2,3]},
 {name:"Fikre",positions:[2,3]},{name:"Nati",positions:[2,3]},{name:"Sami",positions:[2,3]},{name:"Yohannes",positions:[2,3]},{name:"Noah Natan",positions:[2,3]},
 {name:"Abel (Jr)",positions:[3]},{name:"Ermias",positions:[3]},{name:"Ananiya",positions:[3]},{name:"Lil Kidus",positions:[3]},{name:"Eyoram",positions:[3]}];
-let admin=false,S={deacons:[],entries:{}},V=new Date(),sel=null;V.setDate(1);
+let admin=false,S={deacons:[],entries:{}},V=new Date(),sel=null;
+// Open the calendar on the nearest Saturday that has not passed.
+let daysUntilSaturday=(6-V.getDay()+7)%7;
+V.setDate(V.getDate()+daysUntilSaturday);
+V.setHours(12,0,0,0);
+V.setDate(1);
 const key=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 function editable(){["d1","d2","d3","psalm","r1","r2"].forEach(id=>g(id).disabled=!admin);g("saveArea").classList.toggle("hidden",!admin);g("manage").classList.toggle("hidden",!admin);g("login").classList.toggle("hidden",admin);g("logout").classList.toggle("hidden",!admin);g("status").textContent=admin?"🔒 Administrator mode: schedules are shared with everyone. Select a Saturday or Sunday.":"👀 View-only mode. Schedules are available every Saturday and Sunday."}
 function eligible(pos){return S.deacons.filter(d=>(d.positions||[1,2,3]).includes(pos))}

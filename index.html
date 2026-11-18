@@ -3,6 +3,51 @@
 <title>Anketse Birhan Kidus Urael EOTC</title>
 <style>
 :root{--green:#0d4b3a;--gold:#c9a227;--cream:#f7f1df}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:#20332d}header,footer{background:var(--green);color:#fff;text-align:center;padding:20px;border-bottom:5px solid var(--gold)}header div{color:#f4d76e;font-size:20px}h1{margin:8px 0;font-size:28px}main{max-width:1050px;margin:auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.card{background:#fff;border-radius:14px;padding:18px;border-top:5px solid var(--gold);box-shadow:0 3px 12px #0001}.head{display:flex;justify-content:space-between;align-items:center;gap:8px}.days,.dates{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.days{text-align:center;font-size:12px;font-weight:bold}.date{min-height:52px;background:#faf7ed;color:#20332d;border:1px solid #e2d7b4;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05}.ethnum{font-size:11px;margin-top:3px}.weekday{opacity:.4;cursor:not-allowed}.weekend{background:#fff8db;font-weight:bold}.selected{outline:3px solid var(--gold)}.saved{border-color:var(--green);font-weight:bold}button{background:var(--green);color:white;border:0;border-radius:8px;padding:9px 12px;cursor:pointer}.remove{background:#8b2d2d}input,select,textarea{width:100%;padding:10px;margin:5px 0 12px;border:1px solid #cfc5a8;border-radius:7px;font:inherit}textarea{min-height:82px}.list div{display:flex;justify-content:space-between;align-items:center;padding:8px;background:#faf7ed;margin:5px 0;border-radius:7px}.note{font-size:13px;background:#fff8db;padding:10px;border-radius:7px;margin-top:12px}.hidden{display:none!important}.modal{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;padding:18px}.modalbox{width:min(400px,100%);background:white;padding:20px;border-radius:14px}.top{margin-top:10px}@media(max-width:700px){.grid{grid-template-columns:1fr}h1{font-size:22px}}
+
+/* Responsive layout: phones, tablets, and laptops */
+html,body{width:100%;min-width:0;overflow-x:hidden}
+body{font-size:clamp(14px,1.2vw,16px)}
+header{padding:clamp(12px,2.5vw,20px)}
+header div{font-size:clamp(15px,2vw,20px)}
+h1{font-size:clamp(19px,3vw,28px);overflow-wrap:anywhere}
+main{width:100%;max-width:1200px;margin:0 auto;padding:clamp(10px,2vw,20px)}
+.grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(10px,1.8vw,20px)}
+.card{min-width:0;padding:clamp(10px,1.8vw,18px)}
+.head{min-width:0;flex-wrap:nowrap}
+.head h2{min-width:0;text-align:center;font-size:clamp(15px,2vw,22px);overflow-wrap:anywhere}
+.head button{flex:0 0 auto;padding:8px clamp(7px,1vw,12px);font-size:clamp(11px,1.1vw,14px)}
+.days,.dates{grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(2px,.45vw,4px);width:100%}
+.days>b{min-width:0;overflow:hidden;text-align:center;font-size:clamp(8px,1vw,12px);line-height:1.15}
+.date{width:100%;min-width:0;min-height:clamp(44px,6vw,60px);padding:4px 1px;font-size:clamp(10px,1.15vw,14px);white-space:nowrap;overflow:hidden}
+.ethnum{font-size:clamp(8px,.95vw,11px);max-width:100%;overflow:hidden}
+button,input,select,textarea{max-width:100%}
+input,select,textarea{font-size:16px}
+@media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}main{max-width:720px}}
+@media(max-width:520px){
+ header{padding:12px 8px}
+ header p{margin:7px 0;font-size:12px}
+ header button{margin:3px}
+ main{padding:8px}
+ .card{padding:10px;border-radius:10px}
+ .grid{gap:10px}
+ .head{gap:4px}
+ .head button{padding:7px 6px;font-size:11px}
+ .head h2{font-size:15px;margin:8px 0}
+ .days,.dates{gap:2px}
+ .days>b{font-size:8px;letter-spacing:-.35px}
+ .date{min-height:44px;padding:3px 0;font-size:10px;border-radius:4px}
+ .ethnum{font-size:8px;margin-top:2px}
+ .note{font-size:11px;padding:8px}
+ .modal{padding:10px}
+ .modalbox{padding:14px}
+}
+@media(max-width:360px){
+ .days>b{font-size:7px}
+ .date{font-size:9px;min-height:40px}
+ .ethnum{font-size:7px}
+ .head button{font-size:10px;padding:6px 4px}
+}
+
 </style></head><body>
 <header><div>✦ አንቀፀ ብርሃን ቅዱስ ዑራኤል ✦</div><h1>ANKETSE BIRHAN KIDUS URAEL EOTC</h1><p>DEACON SCHEDULER</p><button id="login">Administrator Login</button><button id="logout" class="hidden">Log out</button></header>
 <main><p id="status" class="note">👀 View-only mode. Schedules are available every Saturday and Sunday.</p><div class="grid"><section class="card"><div class="head"><button onclick="move(-1)">← Previous</button><h2 id="title"></h2><button onclick="move(1)">Next →</button></div><p class="note">📅 American date · 🇪🇹 የኢትዮጵያ ቀን</p><div class="days"><b>እሑድ</b><b>ሰኞ</b><b>ማክሰኞ</b><b>ረቡዕ</b><b>ሐሙስ</b><b>ዓርብ</b><b>ቅዳሜ</b></div><div id="cal" class="dates"></div></section>
